@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class AppController extends GetxController {
+class CounterController extends GetxController {
   RxInt counter = 0.obs;
   void increment() {
     counter++;

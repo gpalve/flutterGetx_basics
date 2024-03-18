@@ -6,20 +6,23 @@ class Counter extends StatelessWidget {
   const Counter({super.key});
   @override
   Widget build(BuildContext context) {
-    AppController myController = Get.put(AppController());
+    // Removing the in-view dependency injection managing it through bindings
+    // CounterController myController = Get.put(CounterController());
     return Column(
       children: [
         ElevatedButton(
-          onPressed: () => myController.increment(), // Use a callback
+          onPressed: () =>
+              Get.find<CounterController>().increment(), // Use a callback
           child: const Text(
             "+",
             style: TextStyle(fontSize: 20),
           ),
         ),
-        Obx(() => Text(myController.counter.string,
+        Obx(() => Text(Get.find<CounterController>().counter.string,
             style: const TextStyle(fontSize: 20))),
         ElevatedButton(
-          onPressed: () => myController.decrement(), // Use a callback
+          onPressed: () =>
+              Get.find<CounterController>().decrement(), // Use a callback
           child: const Text(
             "-",
             style: TextStyle(fontSize: 20),
